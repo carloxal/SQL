@@ -1,0 +1,29 @@
+--Create a musicians table.
+CREATE TABLE musicians (id INTEGER PRIMARY KEY AUTOINCREMENT, fullname TEXT, birth_place TEXT);
+
+INSERT INTO musicians (fullname, birth_place) VALUES ("Michael Jackson","Gary, IN");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Paul McCartney","Walton, Liverpool, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Dua Lipa","London, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Elton John", "Pinner, UK");
+
+--Create a musicians_work to display their songs.
+CREATE TABLE musicians_work (work_id INTEGER PRIMARY KEY AUTOINCREMENT, song TEXT, release_year TEXT);
+
+INSERT INTO musicians_work (song, release_year) VALUES ("Thriller", 1982);
+INSERT INTO musicians_work (song, release_year) VALUES ("Say Say Say", 1982);
+INSERT INTO musicians_work (song, release_year) VALUES ("Cold Heart", 2021);
+
+--Create a featuring table to combine the artists and the songs where they participate together.
+CREATE TABLE featuring (artist_id1 INTEGER, artist_id2 INTEGER, song_id INTEGER);
+
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (1,2,2);
+INSERT INTO featuring (artist_id1,artist_id2, song_id) VALUES (3,4,3);
+
+--Create a query that joins the featuring table with musicians and their work and display their names, their birthplace, the name of the song and its release year
+SELECT a.fullname AS artist_1, b.fullname AS artist_2, a.birth_place as birthplace_artist_1,b.birth_place as birthplace_artist_2, w.song, w.release_year FROM featuring
+	JOIN musicians a
+	ON featuring.artist_id1 = a.id
+	JOIN musicians b
+	ON featuring.artist_id2 = b.id
+    JOIN musicians_work w
+    ON featuring.song_id = w.work_id;
