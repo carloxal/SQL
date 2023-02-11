@@ -5,19 +5,45 @@ INSERT INTO musicians (fullname, birth_place) VALUES ("Michael Jackson","Gary, I
 INSERT INTO musicians (fullname, birth_place) VALUES ("Paul McCartney","Walton, Liverpool, UK");
 INSERT INTO musicians (fullname, birth_place) VALUES ("Dua Lipa","London, UK");
 INSERT INTO musicians (fullname, birth_place) VALUES ("Elton John", "Pinner, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Gwen Stefani", "Fullerton, CA");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Akon", "St. Louis, MO");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Jay-Z", "Brooklyn, NY");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Alicia Keys", "New York, NY");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Tinchy Stryder", "Accra, Ghana");
+INSERT INTO musicians (fullname, birth_place) VALUES ("N-Dubz", "Camnden Town, London, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("David Guetta", "Paris, France");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Kelly Rowland", "Atlanta, GA");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Taio Cruz", "London Borough of Brent, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Ludacris", "Champaign, IL");
+INSERT INTO musicians (fullname, birth_place) VALUES ("Cheryl Cole", "Newcastle upon Tyne, UK");
+INSERT INTO musicians (fullname, birth_place) VALUES ("will.i.am", "Los Angeles, CA");
+
 
 --Create a musicians_work to display their songs.
 CREATE TABLE musicians_work (work_id INTEGER PRIMARY KEY AUTOINCREMENT, song TEXT, release_year TEXT);
 
-INSERT INTO musicians_work (song, release_year) VALUES ("Thriller", 1982);
-INSERT INTO musicians_work (song, release_year) VALUES ("Say Say Say", 1982);
-INSERT INTO musicians_work (song, release_year) VALUES ("Cold Heart", 2021);
+INSERT INTO musicians_work (song, release_year) VALUES ("Say Say Say",  "1982");
+INSERT INTO musicians_work (song, release_year) VALUES ("Cold Heart", "2021");
+INSERT INTO musicians_work (song, release_year) VALUES ("The Sweet Escape", "2006");
+INSERT INTO musicians_work (song, release_year) VALUES ("Empire State of Mind", "2009");
+INSERT INTO musicians_work (song, release_year) VALUES ("Number-1", "2009");
+INSERT INTO musicians_work (song, release_year) VALUES ("When Love Takes Over", "2009");
+INSERT INTO musicians_work (song, release_year) VALUES ("Sexy Bitch", "2009");
+INSERT INTO musicians_work (song, release_year) VALUES ("Break Your Heart", "2009");
+INSERT INTO musicians_work (song, release_year) VALUES ("3 Words", "2009");
 
 --Create a featuring table to combine the artists and the songs where they participate together.
 CREATE TABLE featuring (artist_id1 INTEGER, artist_id2 INTEGER, song_id INTEGER);
 
-INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (1,2,2);
-INSERT INTO featuring (artist_id1,artist_id2, song_id) VALUES (3,4,3);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (1,2,1);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (3,4,2);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (5,6,3);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (7,8,4);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (9,10,5);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (11, 12, 6);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (11, 6, 7);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (13, 14, 8);
+INSERT INTO featuring (artist_id1, artist_id2, song_id) VALUES (15, 16, 9);
 
 --Create a query that joins the featuring table with musicians and their work and display their names, their birthplace, the name of the song and its release year
 SELECT a.fullname AS artist_1, b.fullname AS artist_2, a.birth_place as birthplace_artist_1,b.birth_place as birthplace_artist_2, w.song, w.release_year FROM featuring
